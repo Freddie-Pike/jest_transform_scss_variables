@@ -1,10 +1,5 @@
 const path = require("path");
 
-const commonModuleNameMappers = {
-  "\\.module\\.(css|scss)$": "identity-obj-proxy",
-  "\\.(css|scss)$": require.resolve("./__mocks__/empty_mock.js"),
-};
-
 module.exports = {
   rootDir: path.join(__dirname, "./"),
   transform: {
@@ -16,7 +11,13 @@ module.exports = {
   setupFilesAfterEnv: ["<rootDir>/test/setupTests.js"],
   testEnvironment: "jsdom",
   transformIgnorePatterns: ["<rootDir>/node_modules/(?!${greeter})"],
-  watchPlugins: ["jest-watch-typeahead/filename", "jest-watch-typeahead/testname"],
-  moduleNameMapper: commonModuleNameMappers,
+  watchPlugins: [
+    "jest-watch-typeahead/filename",
+    "jest-watch-typeahead/testname",
+  ],
+  moduleNameMapper: {
+    "\\.module\\.(css|scss)$": "identity-obj-proxy",
+    "\\.(css|scss)$": require.resolve("./__mocks__/empty_mock.js"),
+  },
   verbose: true,
 };
