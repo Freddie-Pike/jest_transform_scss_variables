@@ -13,7 +13,7 @@ function Button({ children, onClick = () => {}, bgColor = scssVariables.buttonBg
 Button.propTypes = {
   children: PropTypes.node,
   onClick: PropTypes.func.isRequired,
-  bgColor: PropTypes.string.isRequired,
+  bgColor: PropTypes.string,
 };
 
 export default Button;
